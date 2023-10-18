@@ -9,7 +9,34 @@ const projectSchema = new mongoose.Schema({
   team: [String],
   image_url: String,
 });
+// const projectSchema = new mongoose.Schema({
+//   image: {
+//     type: String,
+//     required: true,
+//   },
+//   name: {
+//     type: String,
+//     required: true,
+//   },
+//   description: {
+//     type: String,
+//     required: true,
+//   },
+//   status: {
+//     type: String,
+//     required: true,
+//   },
+//   start_date: {
+//     type:String,
+//     required: true,
+//   },
+//   end_date: {
+//     type:String,
+//     required: true,
+//   },
 
+// });
 const Project = mongoose.model('Project', projectSchema);
 
 module.exports = Project;
+

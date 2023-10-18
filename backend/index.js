@@ -1,42 +1,40 @@
+require('dotenv').config();
+
+const dbUrl = process.env.DB_URL;
+const apiKey = process.env.API_KEY;
+
+
 const express = require("express");
 const mongoose = require("mongoose");
-const routes=require("./routes/route")
-
 const app = express();
 
 app.use(express.json());
-app.use("/",routes)
-// const projects = [
-//   {
-//     id: 1,
-//     name: 'Project A',
-//     description: 'This is Project A',
-//     start_date: '2023-01-01',
-//     end_date: '2023-12-31',
-//     status: 'In Progress',
-//     team: ['John Doe', 'Jane Doe'],
-//     image_url: 'https://example.com/project-a',
-//   },
-// ]
-// app.get('/projects', (req, res) => {
-//   res.json(projects);
-// });
 
-// mongoose
-//   .connect("mongodb+srv://rakshitharakshitha6242:raksh@cluster0.rdl2otz.mongodb.net/test")
-//   .then(() => {
-//     console.log("DB connected successfully");
-//   })
+const testimonialController = require('./controller/testimonialController');
+const serviceController=require("./controller/serviceController")
 
-//   .catch((err) => {
-//     console.log(err);
-//   });
+// Routers
 
-// app.listen(3000, () => {
-//   console.log("Server Running At 3000");
-// });
+
+
+
+const router=require("./routes/userRouter")
+
+ app.use("/",router)
+
+//Use the projectRouter for all project-related routes
+
+
+
+const { authenticateToken } = require('./middleware/auth');
+
+
+
+
+
+
 mongoose
-  .connect("mongodb+srv://rakshitharakshitha6242:raksh@cluster0.rdl2otz.mongodb.net/test", {
+  .connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -47,6 +45,6 @@ mongoose
     console.log(err);
   });
 
-app.listen(3000, () => {
-  console.log("Server Running At 3000");
-});
+  const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+

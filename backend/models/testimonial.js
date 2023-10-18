@@ -1,9 +1,18 @@
 const mongoose = require('mongoose');
 
 const testimonialSchema = new mongoose.Schema({
-  name: String,
-  description: String,
-  image_url: String,
+  image_url: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
 });
 
 const Testimonial = mongoose.model('Testimonial', testimonialSchema);

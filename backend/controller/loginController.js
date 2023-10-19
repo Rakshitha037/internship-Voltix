@@ -1,46 +1,4 @@
-// loginController.js
 
-// const User = require("../models/userModel");
-// const { isValid, isValidBody } = require("./validator");
-// const jwt = require("jsonwebtoken");
-
-// const loginUser = async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-
-//     if (!isValidBody(req.body)) {
-//       return res.status(400).send({ status: "false", msg: "No Data Provided" });
-//     }
-
-//     if (!isValid(email)) {
-//       return res
-//         .status(400)
-//         .send({ status: "false", msg: "Email is Required" });
-//     }
-//     if (!isValid(password)) {
-//       return res
-//         .status(400)
-//         .send({ status: "false", msg: "Password is Required" });
-//     }
-
-//     const findUser = await User.findOne({ email, password });
-//     if (!findUser) {
-//       return res.status(404).send({ status: "false", msg: "User Not Found" });
-//     }
-
-//     const token = jwt.sign({ id: findUser._id }, "secretkey");
-//     res.setHeader("x-user-key", token);
-//     res
-//       .status(200)
-//       .send({
-//         token,
-//         userID: findUser._id,
-//         message: "User Logged in successfully",
-//       });
-//   } catch (error) {
-//     res.status(500).send(error);
-//   }
-// };
 
 // module.exports = { loginUser };
 const User = require("../models/userModel");
@@ -114,4 +72,3 @@ const loginUser = async (req, res) => {
 };
 
 module.exports = { loginUser, generateAccessToken, generateRefreshToken };
-

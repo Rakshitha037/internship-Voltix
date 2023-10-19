@@ -1,4 +1,5 @@
-// controllers/projectController.js
+
+
 const Project = require('../models/project');
 
 const projectController = {
@@ -12,10 +13,10 @@ const projectController = {
   },
 
   createProject: async (req, res) => {
-    const { name, description, start_date, end_date, team, status, image_url } = req.body;
+    const projectData = req.body; // Assuming req.body is an object with all parameters
 
     try {
-      const newProject = new Project({ name, description, start_date, end_date, team, status, image_url });
+      const newProject = new Project(projectData);
       const savedProject = await newProject.save();
       res.status(201).json(savedProject);
     } catch (error) {
@@ -24,12 +25,12 @@ const projectController = {
   },
 
   updateProject: async (req, res) => {
-    const { name, description, start_date, end_date, team, status, image_url } = req.body;
+    const projectData = req.body; // Assuming req.body is an object with all parameters
 
     try {
       const updatedProject = await Project.findByIdAndUpdate(
         req.params.id,
-        { name, description, start_date, end_date, team, status, image_url },
+        projectData,
         { new: true }
       );
 
@@ -59,3 +60,4 @@ const projectController = {
 };
 
 module.exports = projectController;
+

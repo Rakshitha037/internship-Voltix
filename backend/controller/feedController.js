@@ -1,7 +1,8 @@
-// controllers/feedController.js
+// feedsController.js
+
 const Feed = require('../models/feeds');
 
-const feedController = {
+const feedsController = {
   getAllFeeds: async (req, res) => {
     try {
       const feeds = await Feed.find();
@@ -12,10 +13,10 @@ const feedController = {
   },
 
   createFeed: async (req, res) => {
-    const { first_name, last_name, email,phone_number } = req.body;
+    const feedData = req.body;
 
     try {
-      const newFeed = new Feed({ first_name, last_name, email,phone_number  });
+      const newFeed = new Feed(feedData);
       const savedFeed = await newFeed.save();
       res.status(201).json(savedFeed);
     } catch (error) {
@@ -24,12 +25,12 @@ const feedController = {
   },
 
   updateFeed: async (req, res) => {
-    const { first_name, last_name, email,phone_number  } = req.body;
+    const feedData = req.body;
 
     try {
       const updatedFeed = await Feed.findByIdAndUpdate(
         req.params.id,
-        { first_name, last_name, email,phone_number  },
+        feedData,
         { new: true }
       );
 
@@ -58,4 +59,4 @@ const feedController = {
   },
 };
 
-module.exports = feedController;
+module.exports = feedsController;

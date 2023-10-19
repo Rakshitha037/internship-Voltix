@@ -1,7 +1,8 @@
-// controllers/testimonialController.js
+// testimonialsController.js
+
 const Testimonial = require('../models/testimonial');
 
-const testimonialController = {
+const testimonialsController = {
   getAllTestimonials: async (req, res) => {
     try {
       const testimonials = await Testimonial.find();
@@ -12,10 +13,10 @@ const testimonialController = {
   },
 
   createTestimonial: async (req, res) => {
-    const { name, description, image_url } = req.body;
+    const testimonialData = req.body;
 
     try {
-      const newTestimonial = new Testimonial({ name, description, image_url });
+      const newTestimonial = new Testimonial(testimonialData);
       const savedTestimonial = await newTestimonial.save();
       res.status(201).json(savedTestimonial);
     } catch (error) {
@@ -24,12 +25,12 @@ const testimonialController = {
   },
 
   updateTestimonial: async (req, res) => {
-    const { name, description, image_url } = req.body;
+    const testimonialData = req.body;
 
     try {
       const updatedTestimonial = await Testimonial.findByIdAndUpdate(
         req.params.id,
-        { name, description, image_url },
+        testimonialData,
         { new: true }
       );
 
@@ -58,4 +59,4 @@ const testimonialController = {
   },
 };
 
-module.exports = testimonialController;
+module.exports = testimonialsController;

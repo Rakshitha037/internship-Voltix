@@ -1,3 +1,6 @@
+
+
+
 const User = require("../models/userModel");
 const { isValid, isValidBody } = require("./validator");
 const jwt = require("jsonwebtoken")
@@ -84,3 +87,5 @@ const loginUser = async (req, res) => {
 };
 
 module.exports = { createUser, loginUser };
+
+

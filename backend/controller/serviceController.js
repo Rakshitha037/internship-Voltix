@@ -1,7 +1,12 @@
-// controllers/serviceController.js
+
+
+
+
+// servicesController.js
+
 const Service = require('../models/service');
 
-const serviceController = {
+const servicesController = {
   getAllServices: async (req, res) => {
     try {
       const services = await Service.find();
@@ -12,10 +17,10 @@ const serviceController = {
   },
 
   createService: async (req, res) => {
-    const { name, description, image_url } = req.body;
+    const serviceData = req.body;
 
     try {
-      const newService = new Service({ name, description, image_url });
+      const newService = new Service(serviceData);
       const savedService = await newService.save();
       res.status(201).json(savedService);
     } catch (error) {
@@ -24,12 +29,12 @@ const serviceController = {
   },
 
   updateService: async (req, res) => {
-    const { name, description, image_url } = req.body;
+    const serviceData = req.body;
 
     try {
       const updatedService = await Service.findByIdAndUpdate(
         req.params.id,
-        { name, description, image_url },
+        serviceData,
         { new: true }
       );
 
@@ -58,4 +63,4 @@ const serviceController = {
   },
 };
 
-module.exports = serviceController;
+module.exports = servicesController;

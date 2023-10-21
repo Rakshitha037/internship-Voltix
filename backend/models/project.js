@@ -88,6 +88,10 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  created_by:{
+    type:String,
+    required:true,
+  }
 });
 
 // Create the Project model

@@ -1,5 +1,6 @@
 const express = require('express');
 const {authenticateToken} = require('../middleware/auth');
+const router = express.Router();
 
 const userController = require('../controller/userController');
 const projectController = require('../controller/projectController');
@@ -9,8 +10,11 @@ const testimonialController = require('../controller/testimonialController');
 const feedController = require('../controller/feedController');
 const contactController = require('../controller/contactController');
 
+//const awsController = require('../controller/awsController');
 
-const router = express.Router();
+
+
+
 
 router.post('/register', userController.createUser); // Use createUser, not registerUser
 router.post('/login', userController.loginUser);
@@ -50,4 +54,43 @@ router.put('/contacts/:id',authenticateToken, contactController.updateContact);
 
 
 
-module.exports = router;
+
+// Define routes for AWS actions
+//  router.post('/upload', awsController.upload);
+// router.get('/list', awsController.list);
+// router.get('/download/:filename', awsController.download);
+// router.delete('/delete/:filename', awsController.delete);
+
+
+
+
+
+//Define routes for AWS actions
+// router.post('/upload', awsController.uploadFile);
+// router.get('/list', awsController.listFiles);
+// router.get('/download/:filename', awsController.downloadFile);
+// router.delete('/delete/:filename', awsController.deleteFile);
+
+
+
+// router.js
+
+const { uploadFile, listFiles, downloadFile, deleteFile } = require('../controller/awsController');
+const multerMiddleware = require('../middleware/multer');
+
+
+
+router.post('/upload', multerMiddleware, uploadFile);
+router.get('/list', listFiles);
+router.get('/download/:filename', downloadFile);
+router.delete('/delete/:filename', deleteFile);
+
+
+
+
+
+
+ module.exports = router;
+
+
+

@@ -3,15 +3,30 @@ require('dotenv').config();
 const dbUrl = process.env.DB_URL;
 const apiKey = process.env.API_KEY;
 
+const express = require('express');
+//const s3Routes = require('./routes/s3Routes');
 
-const express = require("express");
+
+
+
 const mongoose = require("mongoose");
+ //const awsController = require('./controller/awsController');
 const app = express();
 
 app.use(express.json());
+// app.use('/s3', s3Routes)
 
 const testimonialController = require('./controller/testimonialController');
 const serviceController=require("./controller/serviceController")
+
+
+
+
+
+// app.listen(3001);
+
+
+
 
 // Routers
 
@@ -19,8 +34,12 @@ const serviceController=require("./controller/serviceController")
 
 
 const router=require("./routes/userRouter")
+//app.use('/s3', s3Routes)
 
  app.use("/",router)
+//  app.use('/', awsController);
+
+
 
 //Use the projectRouter for all project-related routes
 

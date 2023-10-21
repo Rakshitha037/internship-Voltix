@@ -13,6 +13,10 @@ const testimonialSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  created_by:{
+    type:String,
+    required:true,
+  }
 });
 
 const Testimonial = mongoose.model('Testimonial', testimonialSchema);

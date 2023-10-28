@@ -1,11 +1,16 @@
 
 
 const Project = require('../models/project');
+const multerConfig = require('../middleware/multer');
+const {generatePublicPresignedUrl} = require('../middleware/multer');
+
+// Access the 's3' object
+const s3 = multerConfig.s3;
 
 const projectController = {
   getAllProjects: async (req, res) => {
     try {
-      const projects = await Project.find();
+      const projects = await Project.find({});
       res.json(projects);
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -26,7 +31,8 @@ const projectController = {
 
   updateProject: async (req, res) => {
     const projectData = req.body; // Assuming req.body is an object with all parameters
-
+    console.log(projectData)
+    console.log(req.params.id)
     try {
       const updatedProject = await Project.findByIdAndUpdate(
         req.params.id,
@@ -34,12 +40,15 @@ const projectController = {
         { new: true }
       );
 
+      console.log(updatedProject,'kjjj')
+
       if (!updatedProject) {
         return res.status(404).json({ message: 'Project not found' });
       }
 
       res.json(updatedProject);
     } catch (error) {
+      console.log(error)
       res.status(400).json({ message: error.message });
     }
   },

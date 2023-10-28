@@ -75,15 +75,15 @@ router.put('/contacts/:id',authenticateToken, contactController.updateContact);
 
 // router.js
 
-const { uploadFile, listFiles, downloadFile, deleteFile } = require('../controller/awsController');
-const multerMiddleware = require('../middleware/multer');
+// const { uploadFile, listFiles, downloadFile, deleteFile } = require('../controller/awsController');
+// const multerMiddleware = require('../middleware/multer');
 
 
 
-router.post('/upload', multerMiddleware, uploadFile);
-router.get('/list', listFiles);
-router.get('/download/:filename', downloadFile);
-router.delete('/delete/:filename', deleteFile);
+// router.post('/upload', multerMiddleware, uploadFile);
+// router.get('/list', listFiles);
+// router.get('/download/:filename', downloadFile);
+// router.delete('/delete/:filename', deleteFile);
 
 
 

@@ -1,0 +1,15 @@
+/* Add this CSS to make the text black */
+.black-text {
+    color: black !important;
+  }
+  /* Add this to your existing stylesheet or create a new one */
+
+.navbar-nav .nav-link {
+    color: #000 !important; /* Change the color value to your desired color */
+  }
+  
+  /* Optionally, you can add styles for the active link */
+  .navbar-nav .nav-item.active .nav-link {
+    color: #ff0000 !important; /* Change the color value to your desired active link color */
+  }
+  

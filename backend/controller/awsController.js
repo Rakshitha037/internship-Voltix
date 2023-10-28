@@ -1,164 +1,63 @@
 
-// require("dotenv").config();
-// const express = require('express');
-// const aws = require('aws-sdk');
-// const multer = require('multer');
-// const multerS3 = require('multer-s3');
 
-// aws.config.update({
-//     secretAccessKey: process.env.WASABI_SECRET,
-//     accessKeyId: process.env.WASABI_KEY,
-//     endpoint: 's3.wasabisys.com',
-//     s3ForcePathStyle: true,
-//     signatureVersion: 'v4',
-//     region: process.env.REGION,
-// });
+const AWS = require('aws-sdk');
 
-// const BUCKET = process.env.WASABI_BUCKET;
-// const s3 = new aws.S3();
+// Wasabi credentials
+const wasabiAccessKey = process.env.WASABI_KEY;
+const wasabiSecretKey = process.env.WASABI_SECRET;
+const wasabiBucketName = process.env.WASABI_BUCKET;
 
-// const upload = multer({
-//     storage: multerS3({
-//         s3: s3,
-//         acl: 'public-read',
-//         bucket: BUCKET,
-//         key: function (req, file, cb) {
-//             console.log(file);
-//             cb(null, file.originalname);
-//         },
-//     }),
-// });
-
-// // const uploadFile = async (req, res) => {
-// //     try {
-// //         if (!req.file) {
-// //             return res.status(400).send('No file uploaded.');
-// //         }
-// //         res.send('Successfully uploaded ' + req.file.location + ' location!');
-// //     } catch (error) {
-// //         console.error(error);
-// //         res.status(500).send('Internal Server Error');
-// //     }
-// // };
-// const uploadFile = async (req, res, next) => {
-//     try {
-//         console.log(req.file);  // Add this line for debugging
-
-//         if (!req.file) {
-//             return res.status(400).send('No file uploaded.');
-//         }
-//         res.send('Successfully uploaded ' + req.file.location + ' location!');
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// };
-
-// const listFiles = async (req, res) => {
-//     try {
-//         let r = await s3.listObjectsV2({ Bucket: BUCKET }).promise();
-//         let x = r.Contents.map((item) => item.Key);
-//         res.send(x);
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// };
-
-// const downloadFile = async (req, res) => {
-//     try {
-//         const filename = req.params.filename;
-//         let x = await s3.getObject({ Bucket: BUCKET, Key: filename }).promise();
-//         res.send(x.Body);
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// };
-
-// const deleteFile = async (req, res) => {
-//     try {
-//         const filename = req.params.filename;
-//         await s3.deleteObject({ Bucket: BUCKET, Key: filename }).promise();
-//         res.send('File Deleted Successfully');
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// };
-
-// module.exports = { uploadFile, listFiles, downloadFile, deleteFile };
-
-
-
-
-const aws = require('aws-sdk');
-const multer = require('multer');
-const multerS3 = require('multer-s3');
-
-aws.config.update({
-    secretAccessKey: process.env.WASABI_SECRET,
-    accessKeyId: process.env.WASABI_KEY,
-    endpoint: 's3.wasabisys.com',
-    s3ForcePathStyle: true,
-    signatureVersion: 'v4',
-    region: process.env.REGION,
+// Configure the AWS SDK
+AWS.config.update({
+  secretAccessKey: wasabiSecretKey,
+  accessKeyId: wasabiAccessKey,
+  endpoint: 's3.wasabisys.com',
+  s3ForcePathStyle: true,
+  signatureVersion: 'v4',
+  region: process.env.REGION,
 });
 
-const BUCKET = process.env.WASABI_BUCKET;
-const s3 = new aws.S3();
+// Create an S3 instance
+const s3 = new AWS.S3();
 
-const upload = multer({
-    storage: multerS3({
-        s3: s3,
-        acl: 'public-read',
-        bucket: BUCKET,
-        key: function (req, file, cb) {
-            console.log(file);
-            cb(null, file.originalname);
-        },
-    }),
-});
+// Function to upload a file to the Wasabi S3 bucket
+exports.uploadFile = (buffer, objectName) => {
+  const params = {
+    Bucket: wasabiBucketName,
+    Key: objectName,
+    Body: buffer,
+  };
 
-const uploadFile = async (req, res, next) => {
-    try {
-        if (!req.file) {
-            return res.status(400).send('No file uploaded.');
+  return new Promise((resolve, reject) => {
+    s3.upload(params, (err, data) => {
+      if (err) {
+        console.error("Error uploading file:", err);
+        reject(err);
+      } else {
+        console.log("File uploaded successfully:", data.Location);
+        resolve(data);
+      }
+    });
+  });
+};
+// Function to delete a file from the Wasabi S3 bucket
+exports.deleteFile = (objectName) => {
+    const params = {
+      Bucket: wasabiBucketName,
+      Key: objectName,
+    };
+  
+    return new Promise((resolve, reject) => {
+      s3.deleteObject(params, (err, data) => {
+        if (err) {
+          console.error("Error deleting file:", err);
+          reject(err);
+        } else {
+          console.log("File deleted successfully");
+          // Respond with a meaningful JSON response
+          resolve({ message: 'File deleted successfully', deletedObject: objectName });
         }
-        res.send('Successfully uploaded ' + req.file.location + ' location!');
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
-};
-
-
-
-const listFiles = async (req, res) => {
-    try {
-        let r = await s3.listObjectsV2({ Bucket: BUCKET }).promise();
-        let x = r.Contents.map((item) => item.Key);
-        res.send(x);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-const downloadFile = async (req, res) => {
-    try {
-        const filename = req.params.filename;
-        let x = await s3.getObject({ Bucket: BUCKET, Key: filename }).promise();
-        res.send(x.Body);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-const deleteFile = async (req, res) => {
-    try {
-        const filename = req.params.filename;
-        await s3.deleteObject({ Bucket: BUCKET, Key: filename }).promise();
-        res.send('File Deleted Successfully');
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-module.exports = { upload, uploadFile, listFiles, downloadFile, deleteFile };
+      });
+    });
+  };
+  

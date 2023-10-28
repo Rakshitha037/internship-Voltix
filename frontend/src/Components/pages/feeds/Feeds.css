@@ -1,0 +1,59 @@
+/* Styling for the main container */
+.feeds-container {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Styling for form elements */
+.form-group {
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styling for testimonials */
+.testimonials {
+  list-style: none;
+  padding: 0;
+}
+
+.testimonials li {
+  margin-bottom: 20px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/* Styling for rating stars */
+.star {
+  color: #f4d83a; /* Default star color */
+}
+
+.star.filled {
+  color: #f4d83a; /* Filled star color */
+}
+
+.star.empty {
+  color: #ccc; /* Empty star color */
+}

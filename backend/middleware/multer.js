@@ -32,9 +32,12 @@
 
 
 
-const { upload } = require('../controller/awsController');
+// const { upload } = require('../controller/awsController');
 
-const multerMiddleware = upload.single('file');
+// const multerMiddleware = upload.single('file');
 
-module.exports = multerMiddleware;
+// module.exports = multerMiddleware;
+
+
+
 

@@ -2,8 +2,11 @@ require('dotenv').config();
 
 const dbUrl = process.env.DB_URL;
 const apiKey = process.env.API_KEY;
-
+const cors = require('cors');
 const express = require('express');
+const bodyParser = require('body-parser');
+const s3Routes = require('./routes/awsroutes');
+
 //const s3Routes = require('./routes/s3Routes');
 
 
@@ -14,6 +17,11 @@ const mongoose = require("mongoose");
 const app = express();
 
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(cors());
+
+// Use S3 routes
+app.use('/', s3Routes);
 // app.use('/s3', s3Routes)
 
 const testimonialController = require('./controller/testimonialController');
@@ -49,7 +57,19 @@ const { authenticateToken } = require('./middleware/auth');
 
 
 
+app.delete('/api/projects/:projectId', authenticateToken, (req, res) => {
+  const { projectId } = req.params;
 
+  // Implement your logic to delete the project from the server data
+  const deletedProjectIndex = projects.findIndex((project) => project.id === parseInt(projectId));
+
+  if (deletedProjectIndex !== -1) {
+    projects.splice(deletedProjectIndex, 1);
+    res.status(200).json({ message: 'Project deleted successfully' });
+  } else {
+    res.status(404).json({ message: 'Project not found' });
+  }
+});
 
 
 mongoose

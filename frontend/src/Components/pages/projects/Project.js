@@ -110,6 +110,8 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import baseUrl from '../../../utils/baseUrl';
 import '../projects/Project.css';
 import './Project.css'; 
 const Projects = ({ projectId }) => {
@@ -117,10 +119,12 @@ const Projects = ({ projectId }) => {
   const [error, setError] = useState(null);
   const [description, setDescription] = useState('');
   const token=localStorage.getItem("token")
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchProjectData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/projects`);
+        const response = await axios.get(`${baseUrl}/projects`);
         setProjectData(response.data);
       } catch (error) {
         setError(error.message);
@@ -134,7 +138,7 @@ const Projects = ({ projectId }) => {
 
   const handleDelete = async (id) => {
       try {
-        const response = await axios.delete(`http://localhost:3001/projects/${id}`,{
+        const response = await axios.delete(`${baseUrl}/projects/${id}`,{
           headers:{
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
@@ -154,7 +158,7 @@ const Projects = ({ projectId }) => {
   const handleUpdate = async (id) => {
     try {
       const response = await axios.put(
-        `http://localhost:3001/projects/${id}`,
+        `${baseUrl}/projects/${id}`,
         { description: description },
         {
           headers: {
@@ -174,6 +178,13 @@ const Projects = ({ projectId }) => {
       setError(error.message);
     }
   };
+
+  
+  const handleAddProject = () => {
+    // Implement the logic for adding a new project
+    // This could involve navigating to a different page or showing a modal, for example
+    navigate('/createproject');
+  };
   
 
   return (
@@ -181,6 +192,14 @@ const Projects = ({ projectId }) => {
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}
       {projectData && (
         <div className="card-container">
+          {token && (
+            <div className="card project-card add-project-card" onClick={handleAddProject}>
+              <div className="card-body">
+                <h5 className="card-title">+</h5>
+                <p className="card-text">Add Project</p>
+              </div>
+            </div>
+          )}
           {projectData?.map((project) => (
             <div key={project.id} className="card project-card">
               <img src={project.image_url} className="card-img-top" alt="Project" />

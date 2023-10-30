@@ -18,6 +18,7 @@ const contactController = require('../controller/contactController');
 
 router.post('/register', userController.createUser); // Use createUser, not registerUser
 router.post('/login', userController.loginUser);
+router.get('/users', authenticateToken, userController.getAuthUser);
 
 
 // Define routes for projects

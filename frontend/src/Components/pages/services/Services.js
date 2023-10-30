@@ -1,320 +1,119 @@
-import { Link } from "react-router-dom";
 
-import '../services/Services.css'
 
+
+
+
+
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import baseUrl from '../../../utils/baseUrl';
+import { useNavigate } from 'react-router-dom';
+
+import '../services/Services.css'; // Replace with your actual CSS file
+import './Services.css'; // Replace with your actual CSS file
 
 const Services = () => {
- 
+  const [serviceData, setServiceData] = useState(null);
+  const [error, setError] = useState(null);
+  const [description, setDescription] = useState('');
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchServiceData = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/services`);
+        setServiceData(response.data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchServiceData();
+  }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(`${baseUrl}/services/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      });
+
+      if (response.status === 200) {
+        alert("Service deleted");
+        window.location.reload();
+      } else {
+        alert("Error deleting service");
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleUpdate = async (id) => {
+    try {
+      const response = await axios.put(
+        `${baseUrl}/services/${id}`,
+        { description: description },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        alert("Service updated");
+        window.location.reload();
+      } else {
+        alert("Error updating service");
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleAddService = () => {
+    // Implement the logic for adding a new service
+    // This could involve navigating to a different page or showing a modal, for example
+    navigate('/createservice');
+  };
+
   return (
-    <div>
-              <Link to="/services">
-
-        {/* <button class="btn12">NON VEG</button> */}
-        </Link>
-
-        {/* <h1 className="centered-h1">
-  Discover the Services that we are proud of
-</h1> */}
-
-       <div className="container-grid px-5 pb-5">
-        <div className="col px-3">
-          <div className="card">
-            <img
-              src="/images/vir.jpeg"
-              className="card-img-top equal-image"
-              alt="..."
-            />
-
-            <div className="card-body">
-              <h5 className="card-title">Virtual Reality</h5>
-              {/* <p className="card-text">Chole Bhature</p> */}
-
-              <p class="d-inline-flex gap-2">
-                <a
-                  class="btn btn-primary"
-                  data-bs-toggle="collapse"
-                  href="#1"
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls="1"
-                >
-                  Description
-                </a>
-                {/* <button
-                  class="btn btn-primary"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#2"
-                  aria-expanded="false"
-                  aria-controls="2"
-                >
-                  Delete
-                </button> */}
-               
-              </p>
-              <div class="row">
-                <div class="col">
-                  <div
-                    class="collapse multi-collapse"
-                    id="1"
-                  >
-                    
-                    
-                    <div class="card card-body">
-                    Full stack development is the end-to-end development of applications. It includes both the front end and back end of an application. The front end is usually accessed by a client, and the back end forms the core of the application where all the business logic is applied.
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div
-                    class="collapse multi-collapse"
-                    id="2"
-                  >
-                    
-                  </div>
-                </div>
+    <div className="services-container">
+      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+      {serviceData && (
+        <div className="card-container">
+          {token && (
+            <div className="card service-card add-service-card" onClick={handleAddService}>
+              <div className="card-body">
+                <h5 className="card-title">+</h5>
+                <p className="card-text">Add Service</p>
               </div>
             </div>
-          </div>
-        </div> 
-        <div className="col px-3">
-          <div className="card">
-            <img src="/images/Enterprise-Software.png" className="card-img-top equal-image" alt="..." />
-
-            <div className="card-body">
-              <h5 className="card-title">Enterprise Software Development</h5>
-               {/* <p className="card-text">chole </p>  */}
-
-              <p class="d-inline-flex gap-2">
-                <a
-                  class="btn btn-primary"
-                  data-bs-toggle="collapse"
-                  href="#3"
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls="3"
-                >
-                  Description
-                </a>
-                {/* <button
-                  class="btn btn-primary"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#4"
-                  aria-expanded="false"
-                  aria-controls="4"
-                >
-                  Delete
-                </button> */}
-              
-              </p>
-              <div class="row">
-                <div class="col">
-                  <div
-                    class="collapse multi-collapse"
-                    id="3"
-                  >
-                    
+          )}
+          {serviceData?.map((service) => (
+            <div key={service.id} className="card service-card">
+              {/* Add your service card structure here */}
+              <div className="card-body">
+                <h5 className="card-title">{service.name}</h5>
+                <p className="card-text">{service.description}</p>
+                <input type="text" defaultValue={service.description} onChange={(e) => setDescription(e.target.value)} />
+                {token && (
+                  <div>
+                    <button onClick={() => handleUpdate(service._id)} className="btn btn-primary">Update</button>
+                    <br></br>
+                    <button onClick={() => handleDelete(service._id)} className="btn btn-danger">Delete</button>
                   </div>
-                </div>
-                <div class="col">
-                  <div
-                    class="collapse multi-collapse"
-                    id="4"
-                  >
-                    
-                  </div>
-                </div>
+                )}
               </div>
             </div>
-          </div>
+          ))}
         </div>
-        <div className="col px-3">
-          <div className="card">
-            <img
-              src="/images/Mobileapp.gif"
-              className="card-img-top equal-image"
-              alt="..."
-            />
-
-            <div className="card-body">
-              <h5 className="card-title">Mobile App development</h5>
-              {/* <p className="card-text">Fish curry</p> */}
-
-              <p class="d-inline-flex gap-2">
-                <a
-                  class="btn btn-primary"
-                  data-bs-toggle="collapse"
-                  href="#4"
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls="4"
-                >
-                  Description
-                </a>
-                {/* <button
-                  class="btn btn-primary"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#6"
-                  aria-expanded="false"
-                  aria-controls="6"
-                >
-                  Delete
-                </button> */}
-            
-              </p>
-              <div class="row">
-                <div class="col">
-                  <div
-                    class="collapse multi-collapse"
-                    id="5"
-                  >
-                    
-                  </div>
-                </div>
-                <div class="col">
-                  <div
-                    class="collapse multi-collapse"
-                    id="6"
-                  >
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col px-3">
-          <div className="card">
-            <img
-              src="/images/php.png"
-              className="card-img-top equal-image"
-              alt="..."
-            />
-
-            <div className="card-body">
-              <h5 className="card-title">Custum PHP development</h5>
-
-              <p class="d-inline-flex gap-2">
-                <a
-                  class="btn btn-primary"
-                  data-bs-toggle="collapse"
-                  href="#7"
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls="7"
-                >
-                  Description
-                </a>
-                {/* <button
-                  class="btn btn-primary"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#8"
-                  aria-expanded="false"
-                  aria-controls="8"
-                >
-                  Delete
-                </button>
-               */}
-              </p>
-              <div class="row">
-                <div class="col">
-                  <div
-                    class="collapse multi-collapse"
-                    id="7"
-                  >
-                    
-                  </div>
-                </div>
-                <div class="col">
-                  <div
-                    class="collapse multi-collapse"
-                    id="8"
-                  >
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col px-3">
-          <div className="card">
-            <img
-              src="/images/rea.webp"
-              className="card-img-top equal-image"
-              alt="..."
-            />
-
-            <div className="card-body">
-              <h5 className="card-title">Augmented Reality</h5>
-              {/* <p className="card-text">Mushroom chilli </p> */}
-
-              <p class="d-inline-flex gap-2">
-                <a
-                  class="btn btn-primary"
-                  data-bs-toggle="collapse"
-                  href="#9"
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls="9"
-                >
-                  Description
-                </a>
-                {/* <button
-                  class="btn btn-primary"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#10"
-                  aria-expanded="false"
-                  aria-controls="10"
-                >
-                  Delete
-                </button> */}
-               
-              </p>
-              <div class="row">
-                <div class="col">
-                  <div
-                    class="collapse multi-collapse"
-                    id="9"
-                  >
-                   
-                  </div>
-                </div>
-                <div class="col">
-                  <div
-                    class="collapse multi-collapse"
-                    id="10"
-                  >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <div className="col px-3"
-        >
-          <div className="card"
-                  style={{
-                    paddingBottom:'7rem'
-                  }}
-          >
-            <img
-              src="/images/plus.png"
-              className="card-img-top equal-image"
-              alt="..."
-              style={{
-                objectFit:"contain",
-                // marginTop:"1rem"
-              }}
-            />
-          </div>
-        </div> */}
-      </div>
-      
+      )}
     </div>
   );
 };

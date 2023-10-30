@@ -1,0 +1,38 @@
+Footer.css
+
+/* Add a class to the main App container to position the footer */
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Set the footer position */
+  .footer-container {
+    background-color: #f0f0f0;
+    padding: 30px 0;
+    text-align: center;
+    margin-bottom:auto;
+    /* Push the footer to the bottom of the container */
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .company-info,
+  .quick-links,
+  .subscribe {
+    flex: 1;
+    margin: 10px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .disclaimer {
+    margin-top: 20px;
+  }

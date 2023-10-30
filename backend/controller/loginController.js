@@ -5,17 +5,6 @@ const User = require("../models/userModel");
 const { isValid, isValidBody } = require("./validator");
 const jwt = require("jsonwebtoken");
 
-// const generateAccessToken = (userId) => {
-//   return jwt.sign({ id: userId, role: "admin" }, "your-secret-key", {
-//     expiresIn: "3m", // Adjust the expiration time as needed
-//   });
-// };
-
-// const generateRefreshToken = (userId) => {
-//   return jwt.sign({ id: userId, role: "admin" }, "your-refresh-key", {
-//     expiresIn: "3m", // Adjust the expiration time as needed
-//   });
-// };
 
 
 // Generate an access token

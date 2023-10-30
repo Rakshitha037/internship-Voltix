@@ -1,0 +1,57 @@
+.create-service-container {
+    max-width: 600px; /* Set a maximum width to your container */
+    margin: auto; /* Center the container on the page */
+    padding: 20px; /* Add some padding for better spacing */
+  
+    /* Add any other styling you need for your container */
+  }
+  body {
+    background-image: url("https://images.unsplash.com/photo-1615715757401-f30e7b27b912?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdoaXRlJTIwJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* This keeps the background fixed when scrolling */
+    /* You can add other background styles like background-position, background-color, etc. */
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #ffdddd;
+    border: 1px solid #ff0000;
+    color: #ff0000;
+  }
+  

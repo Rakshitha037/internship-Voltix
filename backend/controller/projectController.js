@@ -1,11 +1,11 @@
 
 
 const Project = require('../models/project');
-const multerConfig = require('../middleware/multer');
-const {generatePublicPresignedUrl} = require('../middleware/multer');
+// const multerConfig = require('../middleware/multer');
+// const {generatePublicPresignedUrl} = require('../middleware/multer');
 
-// Access the 's3' object
-const s3 = multerConfig.s3;
+// // Access the 's3' object
+// const s3 = multerConfig.s3;
 
 const projectController = {
   getAllProjects: async (req, res) => {

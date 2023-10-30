@@ -73,19 +73,92 @@ const loginUser = async (req, res) => {
     }
 
     const token = jwt.sign({ id: findUser._id }, "secretkey");
+    // update the token
+    console.log(findUser)
+    await User.findByIdAndUpdate(findUser._id, { token },
+      {new:true});
     res.setHeader("x-user-key", token);
     res
       .status(200)
-      .send({
+      .json({
         token,
         userID: findUser._id,
         message: "User Logged in successfully",
+        user  : findUser
       });
   } catch (error) {
     res.status(500).send(error);
   }
 };
 
-module.exports = { createUser, loginUser };
+// get auth user
+const getAuthUser = async (req, res) => {
+   const token = req.query.token
+
+      console.log(req.query)
+  
+      jwt.verify(token, 'secretkey', (err, decodedToken) => {
+  
+          if (err) {
+  
+              return res.status(401).json({
+  
+                  message: 'Invalid token'
+  
+              });
+  
+          }
+
+  
+          // Here, decodedToken will contain the user information (e.g., _id)
+  
+          const userId = decodedToken.id;
+  console.log(decodedToken,'hhhhh')
+  
+  
+          // Now you can fetch the user details using userId and send it as the response
+  
+          // Assuming you have a User model
+  
+          User.findById(userId)
+  
+              .then(user => {
+  
+                  if (!user) {
+  
+                      return res.status(404).json({
+  
+                          message: 'User not found'
+  
+                      });
+  
+                  }
+  
+  
+                  res.json({
+  
+                      user
+  
+                  });
+  
+              })
+  
+              .catch(error => {
+  
+                  console.error('Error fetching user details:', error);
+  
+                  res.status(500).json({
+  
+                      message: 'Internal server error'
+  
+                  });
+  
+              });
+  
+      });
+
+}
+
+module.exports = { createUser, loginUser,getAuthUser  };
 
 

@@ -1,9 +1,16 @@
 /* src/components/ProjectDetails.css */
-
-.projects-container {
+body {
+  background-image: url("https://images.unsplash.com/photo-1615715757401-f30e7b27b912?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdoaXRlJTIwJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* This keeps the background fixed when scrolling */
+  /* You can add other background styles like background-position, background-color, etc. */
+}
+ .projects-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  
 }
 
 .card-container {
@@ -21,7 +28,7 @@
 .project-card img {
   width: 100%;
   height: 150px; /* Set a fixed height for all images */
-  object-fit: cover; /* Maintain aspect ratio while covering the specified width and height */
+  /* object-fit: cover; /* Maintain aspect ratio while covering the specified width and height */
 }
 
 .project-card .card-body {
@@ -34,4 +41,40 @@
 
 .project-card button {
   margin-top: 10px;
+} 
+
+
+
+.add-project-card {
+  width: 100px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+  margin: 16px;
+  border: 2px dashed #ccc; /* Add a dashed border for visual separation */
+  cursor: pointer;
+  position: relative; /* Add relative positioning */
+}
+
+.add-project-card .card-body {
+  text-align: center;
+}
+
+.add-project-card h5 {
+  font-size: 24px; /* Adjust the font size as needed */
+  margin-bottom: 4px;
+}
+
+.add-project-card p {
+  font-size: 12px; /* Adjust the font size as needed */
+  margin: 0;
+  color: #888; /* Adjust the text color as needed */
+}
+
+/* Position the plus symbol to the right */
+.add-project-card .card-body::before {
+ 
+  font-size: 36px; /* Adjust the font size as needed */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

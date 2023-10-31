@@ -1,16 +1,16 @@
 .create-service-container {
-    max-width: 600px; /* Set a maximum width to your container */
-    margin: auto; /* Center the container on the page */
-    padding: 20px; /* Add some padding for better spacing */
+    max-width: 600px; 
+    margin: auto; 
+    padding: 20px; 
   
-    /* Add any other styling you need for your container */
+    
   }
   body {
     background-image: url("https://images.unsplash.com/photo-1615715757401-f30e7b27b912?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdoaXRlJTIwJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D");
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* This keeps the background fixed when scrolling */
-    /* You can add other background styles like background-position, background-color, etc. */
+    background-attachment: fixed; 
+    
   }
   
   .form-group {

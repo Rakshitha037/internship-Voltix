@@ -2,12 +2,12 @@
 
 /* src/components/home/Home.css */
 
-.home-container {
+/* .home-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('https://www.voltixsolution.com/assets/img/tech-men.webp'); /* Adjust the path based on your project structure */
+  background-image: url('https://www.voltixsolution.com/assets/img/tech-men.webp'); 
   background-size: 20;
   background-repeat: no-repeat;
   color: #130101c0;
@@ -19,7 +19,6 @@
 
 
 
-/* Rest of the CSS remains unchanged */
 
 
 .centered-heading {
@@ -38,4 +37,52 @@
   margin-left: 800px;
   text-shadow: 3px 3px 0 #0088cc;
   text-align: right;
+} */
+
+
+
+
+
+/* src/components/home/Home.css */
+
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('https://www.voltixsolution.com/assets/img/tech-men.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #130101c0;
+  font-size: 40rem; /* Adjust the font size for desktop view */
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+/* Adjust font size and other styles for smaller screens */
+@media (max-width: 768px) {
+  .home-container {
+    font-size: 2rem; /* Adjust the font size for mobile view */
+    padding-top: 10px;
+  }
+
+  .first-line,
+  .second-line {
+    margin: 0; /* Remove margin for mobile view */
+    text-align: left;
+    padding: 0; /* Remove padding for mobile view */
+  }
+}
+
+.centered-heading {
+  text-align:left;
+  font-size: 4rem; /* Adjust the font size for both mobile and desktop views */
+}
+
+.first-line,
+.second-line {
+  text-align: left;
+  text-shadow: 3px 3px 0 #0088cc;
 }

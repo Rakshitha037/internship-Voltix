@@ -1,18 +1,8 @@
-/* src/components/ServiceDetails.css */
-
-body {
-  background-image: url("https://images.unsplash.com/photo-1615715757401-f30e7b27b912?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdoaXRlJTIwJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* This keeps the background fixed when scrolling */
-  /* You can add other background styles like background-position, background-color, etc. */
-}
-
+/* Default styles for larger screens */
 .services-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
- 
 }
 
 .card-container {
@@ -23,15 +13,14 @@ body {
 }
 
 .service-card {
-  width: 300px; /* Increase the width as needed */
-  height: 400px; /* Increase the height as needed */
+  width: 300px;
+  height: 400px;
   margin: 16px;
 }
 
 .service-card img {
   width: 100%;
-  height: 150px; /* Set a fixed height for all images */
-  /* object-fit: cover; /* Maintain aspect ratio while covering the specified width and height */
+  height: 150px;
 }
 
 .service-card .card-body {
@@ -44,15 +33,15 @@ body {
 
 .service-card button {
   margin-top: 10px;
-} 
+}
 
 .add-service-card {
-  width: 100px; /* Adjust the width as needed */
-  height: 100px; /* Adjust the height as needed */
+  width: 30px;
+  height: 30px;
   margin: 16px;
-  border: 2px dashed #ccc; /* Add a dashed border for visual separation */
+  border: 2px dashed #ccc;
   cursor: pointer;
-  position: relative; /* Add relative positioning */
+  position: relative;
 }
 
 .add-service-card .card-body {
@@ -60,22 +49,50 @@ body {
 }
 
 .add-service-card h5 {
-  font-size: 24px; /* Adjust the font size as needed */
-  margin-bottom: 4px;
+  font-size: 30px;
+  margin-bottom: 5px;
 }
 
 .add-service-card p {
-  font-size: 12px; /* Adjust the font size as needed */
+  font-size: 12px;
   margin: 0;
-  color: #888; /* Adjust the text color as needed */
+  color: #888;
 }
 
-/* Position the plus symbol to the right */
 .add-service-card .card-body::before {
- 
-  font-size: 36px; /* Adjust the font size as needed */
+  font-size: 36px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .service-card {
+    width: 100%; /* Set to 100% to take full width on smaller screens */
+    height: auto; /* Allow the height to adjust based on content */
+  }
+
+  .service-card img {
+    height: auto; /* Allow the image height to adjust based on the width */
+  }
+
+  .add-service-card {
+    width: 20px; /* Adjust the width for smaller screens */
+    height: 20px; /* Adjust the height for smaller screens */
+  }
+
+  .add-service-card h5 {
+    font-size: 20px; /* Adjust the font size for smaller screens */
+    margin-bottom: 3px;
+  }
+
+  .add-service-card p {
+    font-size: 10px; /* Adjust the font size for smaller screens */
+  }
+
+  .add-service-card .card-body::before {
+    font-size: 24px; /* Adjust the font size for smaller screens */
+  }
 }

@@ -1,15 +1,31 @@
 /* Add this CSS to make the text black */
 .black-text {
-    color: black !important;
-  }
-  /* Add this to your existing stylesheet or create a new one */
+  color: black !important;
+}
 
+/* Add or update the following styles for positioning */
+/* Default positioning for larger screens */
+.navbar-nav {
+  margin-left: auto;
+}
+
+/* Adjusted positioning for smaller screens when the toggler button is pressed */
+.navbar-collapse.show .navbar-nav {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Adjust the margin for the login button when the toggler button is pressed */
+.navbar-collapse.show .btn {
+  margin-left: 10px; /* Adjust as needed */
+}
+
+/* Add or update the following styles for text color */
 .navbar-nav .nav-link {
-    color: #000 !important; /* Change the color value to your desired color */
-  }
-  
-  /* Optionally, you can add styles for the active link */
-  .navbar-nav .nav-item.active .nav-link {
-    color: #ff0000 !important; /* Change the color value to your desired active link color */
-  }
-  
+  color: #000 !important; /* Change the color value to your desired color */
+}
+
+/* Optionally, you can add styles for the active link */
+.navbar-nav .nav-item.active .nav-link {
+  color: #ff0000 !important; /* Change the color value to your desired active link color */
+}

@@ -44,14 +44,14 @@ body {
 } 
 
 
-
+/* 
 .add-project-card {
-  width: 100px; /* Adjust the width as needed */
-  height: 100px; /* Adjust the height as needed */
+  width: 100px; 
+  height: 100px; 
   margin: 16px;
-  border: 2px dashed #ccc; /* Add a dashed border for visual separation */
+  border: 2px dashed #ccc; 
   cursor: pointer;
-  position: relative; /* Add relative positioning */
+  position: relative; 
 }
 
 .add-project-card .card-body {
@@ -59,22 +59,59 @@ body {
 }
 
 .add-project-card h5 {
-  font-size: 24px; /* Adjust the font size as needed */
+  font-size: 24px;
   margin-bottom: 4px;
 }
 
 .add-project-card p {
-  font-size: 12px; /* Adjust the font size as needed */
+  font-size: 12px; 
   margin: 0;
-  color: #888; /* Adjust the text color as needed */
+  color: #888; 
 }
 
-/* Position the plus symbol to the right */
+
 .add-project-card .card-body::before {
  
-  font-size: 36px; /* Adjust the font size as needed */
+  font-size: 36px; 
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+
+.add-project-card {
+  width: 30px; 
+  height: 30px; 
+  margin: 16px;
+  border: 2px dashed #ccc; 
+  cursor: pointer;
+  position: relative; 
+} 
+
+.add-project-card .card-body {
+  text-align: center;
+}
+
+.add-project-card h5 {
+  font-size: 30px; /* Adjust the font size as needed */
+  margin-bottom: 5px;
+  
+  text-align: center;
+}
+
+.add-project-card p {
+  font-size: 10px;
+  margin: 0;
+  color: #888;
+}
+
+/* Position the plus symbol to the left */
+.add-project-card .card-body::before {
+  
+  font-size: 24px; /* Adjust the font size as needed */
+  position: absolute;
+  top: 50%;
+  left: 10%;
   transform: translate(-50%, -50%);
 }

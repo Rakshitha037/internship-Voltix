@@ -13,13 +13,13 @@ const Feeds = () => {
       name: 'Jane Smith',
       description: 'Highly recommended. The team is very professional.',
       rating: 4,
-      photo: 'https://tse1.mm.bing.net/th?id=OIP.mKLX1KVGstNfbArqJQLh9gHaHa&pid=Api&rs=1&c=1&qlt=95&w=112&h=112', // Add URL to Jane's photo
+      photo: 'https://tse1.mm.bing.net/th?id=OIP.AwGBn0RaiFXEpXemdj-2LQHaLG&pid=Api&rs=1&c=1&qlt=95&w=77&h=116'
     },
     {
       name: 'Bob Johnson',
       description: 'Impressed with their quick response and quality work.',
       rating: 5,
-      photo: 'https://tse1.mm.bing.net/th?id=OIP.mKLX1KVGstNfbArqJQLh9gHaHa&pid=Api&rs=1&c=1&qlt=95&w=112&h=112', // Add URL to Bob's photo
+   photo:'https://tse1.mm.bing.net/th?id=OIP.O8vv9O4Ku4HvFQyep-NXMAHaLG&pid=Api&rs=1&c=1&qlt=95&w=74&h=111'
     },
   ]);
 

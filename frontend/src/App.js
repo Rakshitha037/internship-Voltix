@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 import About from './Components/pages/about/About';
 import Home from './Components/pages/home/Home';
 import Contact from './Components/pages/contact/Contact';

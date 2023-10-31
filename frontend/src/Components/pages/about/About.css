@@ -1,4 +1,4 @@
-.about-container {
+/* .about-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,7 +13,7 @@
   }
   
   img {
-    max-width: 100%; /* Reduce the image size */
+    max-width: 100%; 
     border-radius: 8px;
   }
   
@@ -21,7 +21,7 @@
     margin-right: 20px;
     margin-bottom: auto;
     margin-top:3rem;
-    /* max-width:40rem; */
+    
   }
 
   .about-container p{
@@ -31,12 +31,77 @@
   }
   
   h2 {
-    font-size: 40px; /* Increase the font size for the heading */
-    margin-bottom: 10px; /* Adjust the margin as needed */
+    font-size: 40px; 
+    margin-bottom: 10px; 
   }
   
   p {
-    font-size: 20px; /* Increase the font size for the description */
+    font-size: 20px; 
     line-height: 1.5;
   }
-  
+   */
+
+
+
+
+
+   /* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    height: auto; /* Allow height to be determined by content */
+    padding: 2rem; /* Adjust padding for smaller screens */
+  }
+
+  .about-description {
+    margin-right: 0; /* Remove right margin on smaller screens */
+    margin-bottom: 2rem; /* Adjust bottom margin for smaller screens */
+    text-align: center; /* Center the text on smaller screens */
+  }
+
+  .about-container p {
+    margin-top: 2rem; /* Adjust top margin for smaller screens */
+  }
+}
+
+/* Original styles */
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  background-image: url('https://images.unsplash.com/photo-1615715757401-f30e7b27b912?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdoaXRlJTIwJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #0a0909;
+  font-size: 2em;
+  font-weight: bold;
+  padding: 4rem;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.about-description {
+  margin-right: 20px;
+  margin-bottom: auto;
+  margin-top: 3rem;
+}
+
+.about-container p {
+  font-weight: 400;
+  text-wrap: balance;
+  margin-top: 3rem;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.5;
+}

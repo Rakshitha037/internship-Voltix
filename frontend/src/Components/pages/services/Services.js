@@ -89,11 +89,11 @@ const Services = () => {
         <div className="card-container">
           {token && (
             <div className="card service-card add-service-card" onClick={handleAddService}>
-              <div className="card-body">
+              {/* <div className="card-body"> */}
                 <h5 className="card-title">+</h5>
-                <p className="card-text">Add Service</p>
+                {/* <p className="card-text">Add Service</p> */}
               </div>
-            </div>
+            // </div>
           )}
           {serviceData?.map((service) => (
             <div key={service.id} className="card service-card">

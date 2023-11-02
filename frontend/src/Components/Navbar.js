@@ -145,7 +145,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-transparent" style={navbarStyle}>
+    <nav className="navbar navbar-expand-md navbar-dark bg-white" style={navbarStyle}>
       <div className="container">
         <Link className="navbar-brand" to="/">
           <img src="https://www.voltixsolution.com/assets/img/voltix_logo.png" alt="Loading" height="50px" />

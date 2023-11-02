@@ -86,32 +86,34 @@ body {
   margin: 16px;
   border: 2px dashed #ccc; 
   cursor: pointer;
-  position: relative; 
+  position:absolute; 
 } 
 
 .add-project-card .card-body {
-  text-align: center;
+  text-align:justify;
 }
 
 .add-project-card h5 {
   font-size: 30px; /* Adjust the font size as needed */
-  margin-bottom: 5px;
+  margin-top: 5px;
   
-  text-align: center;
+  text-align:center;
+ 
 }
 
 .add-project-card p {
   font-size: 10px;
   margin: 0;
+
   color: #888;
 }
 
 /* Position the plus symbol to the left */
-.add-project-card .card-body::before {
+.add-project-card .card-body::after {
   
   font-size: 24px; /* Adjust the font size as needed */
-  position: absolute;
-  top: 50%;
+  position: center;
+  bottom: 50%;
   left: 10%;
   transform: translate(-50%, -50%);
 }

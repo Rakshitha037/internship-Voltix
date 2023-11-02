@@ -1,109 +1,35 @@
+/* Contact.css */
 
-
-
-body {
-  background-image: url("https://images.unsplash.com/photo-1615715757401-f30e7b27b912?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdoaXRlJTIwJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed; 
- 
-}
+/* Style for the container that holds the contact information */
 .contact-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  background-repeat: no-repeat;
-  background-image: url('https://images.unsplash.com/photo-1615715757401-f30e7b27b912?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdoaXRlJTIwJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D');
-    background-size: cover;
 }
 
+/* Style for the email logo */
 .email-logo {
-  width: 50px; 
-  height: 50px; 
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
 }
 
-
+/* Style for the phone logo */
 .phone-logo {
-  width: 50px; 
-  height: 50px; 
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
 }
 
-
+/* Style for the map container */
 .map-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px; 
-  height: 400px; 
+  margin-top: 20px; /* Adjust the margin as needed */
+  height: 400px; /* Adjust the height as needed */
 }
 
-
-.gm-style {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-
-
-
-
-
-
-
-/* Default styles for larger screens */
-body {
-  background-image: url("https://images.unsplash.com/photo-1615715757401-f30e7b27b912?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdoaXRlJTIwJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed; 
-}
-
-.contact-container {
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-repeat: no-repeat;
-  background-image: url('https://images.unsplash.com/photo-1615715757401-f30e7b27b912?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdoaXRlJTIwJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D');
-  background-size: cover;
-}
-
-.email-logo,
-.phone-logo {
-  width: 50px;
-  height: 50px;
-}
-
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-  .contact-container {
-    padding: 10px; /* Adjust padding for smaller screens */
-  }
-
-  .map-container {
-    height: 200px; /* Adjust height for smaller screens */
-  }
-
-  .email-logo,
-  .phone-logo {
-    width: 30px; /* Adjust width for smaller screens */
-    height: 30px; /* Adjust height for smaller screens */
-  }
-}
-
-.map-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  height: 400px;
-}
-
+/* Style for the Google Map component */
 .gm-style {
   border: 1px solid #ccc;
   border-radius: 5px;

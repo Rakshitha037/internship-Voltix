@@ -22,7 +22,8 @@
 
 /* Add or update the following styles for text color */
 .navbar-nav .nav-link {
-  color: #000 !important; /* Change the color value to your desired color */
+  color: #000 !important; 
+ 
 }
 
 /* Optionally, you can add styles for the active link */

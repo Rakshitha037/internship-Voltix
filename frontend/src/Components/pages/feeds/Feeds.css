@@ -2,15 +2,15 @@
 .feeds-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     margin-top: 50px;
   }
   
   .testimonials {
     list-style: none;
     padding: 0;
-    display: flex; /* Display testimonials horizontally */
-    justify-content: center; /* Center testimonials */
+    display:contents; /* Display testimonials horizontally */
+    justify-content: left; /* Center testimonials */
     flex-wrap: wrap;
     margin-top: 50px; /* Allow wrapping to next line if space is not enough */
   }

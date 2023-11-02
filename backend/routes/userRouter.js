@@ -52,7 +52,7 @@ router.delete('/feeds/:id',authenticateToken,feedController.deleteFeed)
 router.get('/contacts', contactController.getAllContacts);
 router.post('/contacts', authenticateToken,contactController.createContact);
 router.put('/contacts/:id',authenticateToken, contactController.updateContact);
-
+router.get('/ping',)
 
 
 

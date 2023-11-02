@@ -194,16 +194,17 @@ const Projects = ({ projectId }) => {
         <div className="card-container">
           {token && (
             <div className="card project-card add-project-card" onClick={handleAddProject}>
-              {/* <div className="card-body"> */}
+              <div className="card-body">
                 <h5 className="card-title">+</h5>
                 {/* <p className="card-text">Add Project</p> */}
               </div>
-            //  </div>
+               </div>
           )}
           {projectData?.map((project) => (
             <div key={project.id} className="card project-card">
               <img src={project.image_url} className="card-img-top" alt="Project" />
               <div className="card-body">
+                
                 <h5 className="card-title">{project.name}</h5>
                 <p className="card-text">{project.description}</p>
                 <input type="text" defaultValue={project.description} onChange={(e) => setDescription(e.target.value)} />

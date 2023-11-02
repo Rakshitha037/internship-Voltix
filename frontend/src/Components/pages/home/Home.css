@@ -62,7 +62,7 @@
 }
 
 /* Adjust font size and other styles for smaller screens */
-@media (max-width: 768px) {
+@media (min-width: 1000px) {
   .home-container {
     font-size: 2rem; /* Adjust the font size for mobile view */
     padding-top: 10px;
@@ -71,18 +71,18 @@
   .first-line,
   .second-line {
     margin: 0; /* Remove margin for mobile view */
-    text-align: left;
+    text-align: right;
     padding: 0; /* Remove padding for mobile view */
   }
 }
 
 .centered-heading {
-  text-align:left;
+  text-align:right;
   font-size: 4rem; /* Adjust the font size for both mobile and desktop views */
 }
 
 .first-line,
 .second-line {
-  text-align: left;
+  text-align: right;
   text-shadow: 3px 3px 0 #0088cc;
 }

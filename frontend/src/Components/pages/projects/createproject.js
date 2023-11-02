@@ -70,6 +70,7 @@ const Createproject = () => {
 
   return (
     <div className="create-project-container">
+      
       <div className="form-group">
         <label>Project Name:</label>
         <input type="text" placeholder="New Project Name" value={newProjectName} onChange={(e) => setNewProjectName(e.target.value)} />

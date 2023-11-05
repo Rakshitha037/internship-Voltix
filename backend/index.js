@@ -15,19 +15,19 @@ const s3Routes = require('./routes/awsroutes');
 const mongoose = require("mongoose");
  //const awsController = require('./controller/awsController');
 const app = express();
-// app.use(cors(
+app.use(cors(
 //  // {
 //  //  // origin:["https://internship-voltix-frontend.vercel.app"],
 //  //  // methods:["POST","GET"],
 //  //  // credentials:true
 //  // }
-//  ));
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://internship-voltix-frontend.vercel.app');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
+ ));
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://internship-voltix-frontend.vercel.app');
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   next();
+// });
   
 
 app.use(express.json());

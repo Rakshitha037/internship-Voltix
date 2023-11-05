@@ -124,12 +124,22 @@ const Projects = ({ projectId }) => {
   useEffect(() => {
     const fetchProjectData = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/projects`);
+        const response = await axios.get({
+          baseURL:`${baseUrl}/projects`,
+           headers: {
+    'Origin': 'https://internship-voltix-frontend.vercel.app', // Specify your frontend domain
+    'Content-Type': 'application/json',
+  }
+          );
         setProjectData(response.data);
       } catch (error) {
         setError(error.message);
       }
     };
+
+
+
+    
 
     const token=localStorage.getItem("token")
 

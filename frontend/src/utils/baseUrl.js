@@ -1,4 +1,4 @@
-const baseUrl = "internship-voltix-backend.vercel.app
-"
+const baseUrl = "http://localhost:3000"
+
 
 export default baseUrl

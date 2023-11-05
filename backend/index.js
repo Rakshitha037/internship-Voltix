@@ -17,7 +17,7 @@ const mongoose = require("mongoose");
 const app = express();
 app.use(cors(
  {
-  origin:[""],
+  origin:["https://internship-voltix-frontend.vercel.app"],
   methods:["POST","GET"],
   credentials:true
  }

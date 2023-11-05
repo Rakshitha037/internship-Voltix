@@ -16,11 +16,11 @@ const mongoose = require("mongoose");
  //const awsController = require('./controller/awsController');
 const app = express();
 app.use(cors(
- {
-  origin:["https://internship-voltix-frontend.vercel.app"],
-  methods:["POST","GET"],
-  credentials:true
- }
+ // {
+ //  // origin:["https://internship-voltix-frontend.vercel.app"],
+ //  // methods:["POST","GET"],
+ //  // credentials:true
+ // }
  ));
   
 

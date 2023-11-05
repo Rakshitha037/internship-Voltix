@@ -31,7 +31,9 @@ app.use(cors());
 // Use S3 routes
 app.use('/', s3Routes);
 // app.use('/s3', s3Routes)
-
+app.get("/",(req,res)=>{
+ res.json("hello");
+})
 const testimonialController = require('./controller/testimonialController');
 const serviceController=require("./controller/serviceController")
 

@@ -1,4 +1,4 @@
-const baseUrl = "https://voltix.onrender.com"
+const baseUrl = "http://13.48.133.69:3000"
 
 
 export default baseUrl
